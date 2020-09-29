@@ -16,13 +16,13 @@ class CreateUserFavoriteTable extends Migration
         Schema::create('user_favorite', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('micropostId');
+            $table->unsignedBigInteger('micropost_id');
             $table->timestamps();
             // 外部キー制約
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('micropostId')->references('id')->on('microposts');
+            $table->foreign('micropost_id')->references('id')->on('microposts');
             // user_idとmicropostIdの組み合わせの重複を許さない
-            $table->unique(['user_id', 'micropostId']);
+            $table->unique(['user_id', 'micropost_id']);
         });
     }
     /**
